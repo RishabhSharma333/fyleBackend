@@ -1,5 +1,6 @@
 package com.fyle.fyleFullStack.service;
 
+import com.fyle.fyleFullStack.model.BankDetails;
 import com.fyle.fyleFullStack.model.LessBankDetails;
 import com.fyle.fyleFullStack.repository.BankDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,8 @@ public class BankDetailsService {
                 new LessBankDetails(bankDetails.getIfsc(), bankDetails.getBank_id(), bankDetails.getBranch(),bankDetails.getAddress(), bankDetails.getCity(), bankDetails.getDistrict(), bankDetails.getState_name())
         ).collect(Collectors.toList());
     }
+    public List<BankDetails> searchByCity(String city, Integer limit) {
+        return this.bankDetailsRepo.findByCity(city,limit);
+    }
+
 }

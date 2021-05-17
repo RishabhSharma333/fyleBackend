@@ -1,5 +1,6 @@
 package com.fyle.fyleFullStack.controller;
 
+import com.fyle.fyleFullStack.model.BankDetails;
 import com.fyle.fyleFullStack.model.LessBankDetails;
 import com.fyle.fyleFullStack.service.BankDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +24,9 @@ public class BankDetailsController {
     public List<LessBankDetails> searchAny(@RequestParam String q, @RequestParam Integer limit, @RequestParam Integer offset) {
         return bankDetailsService.searchByTerm(q.toUpperCase(), limit, offset);
     }
+    @GetMapping("/city")
+    public List<BankDetails> searchAny(@RequestParam String q, @RequestParam Integer limit) {
+        return bankDetailsService.searchByCity(q,limit);
+    }
+
 }

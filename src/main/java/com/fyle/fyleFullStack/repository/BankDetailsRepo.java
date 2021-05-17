@@ -31,4 +31,14 @@ public interface BankDetailsRepo extends JpaRepository<BankDetails,Integer> {
             nativeQuery = true
     )
     List<BankDetails> findBySearchTerm(@Param("searchTerm") String searchTerm,@Param("pageLimit") Integer pageLimit,@Param("pageOffset") Integer pageOffset);
+
+
+    @Query(value = "Select * from bank_branches as b where " +
+            "b.city LIKE CONCAT('%',:city, '%') " +
+            "order by b.ifsc "+
+            " limit :pageLimit " ,
+            nativeQuery = true
+    )
+    List<BankDetails> findByCity(@Param("city") String city,@Param("pageLimit") Integer pageLimit);
+
 }
