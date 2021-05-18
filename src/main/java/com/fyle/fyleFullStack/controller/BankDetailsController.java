@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class BankDetailsController {
     @Autowired
     private BankDetailsService bankDetailsService;
@@ -25,8 +26,12 @@ public class BankDetailsController {
         return bankDetailsService.searchByTerm(q.toUpperCase(), limit, offset);
     }
     @GetMapping("/city")
-    public List<BankDetails> searchAny(@RequestParam String q, @RequestParam Integer limit) {
-        return bankDetailsService.searchByCity(q,limit);
+    public List<BankDetails> searchCity(@RequestParam String q, @RequestParam Integer limit,@RequestParam Integer offset) {
+        return bankDetailsService.searchByCity(q.toUpperCase(),limit,offset);
+    }
+    @GetMapping("/banks/{bankId}")
+    public BankDetails searchById(@PathVariable Integer bankId){
+    return this.bankDetailsService.searchById(bankId);
     }
 
 }

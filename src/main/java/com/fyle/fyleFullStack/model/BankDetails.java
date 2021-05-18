@@ -14,13 +14,14 @@ public class BankDetails {
     private String address;
     private String city;
     private String district;
-    private String state_name;
+    @Column(name="state_name")
+    private String state;
     private String bank_name;
 
     public BankDetails() {
     }
 
-    public BankDetails(Integer id, String ifsc, String bank_id, String branch, String address, String city, String district, String state_name, String bank_name) {
+    public BankDetails(Integer id, String ifsc, String bank_id, String branch, String address, String city, String district, String state, String bank_name) {
         this.id = id;
         this.ifsc = ifsc;
         this.bank_id = bank_id;
@@ -28,7 +29,7 @@ public class BankDetails {
         this.address = address;
         this.city = city;
         this.district = district;
-        this.state_name = state_name;
+        this.state = state;
         this.bank_name = bank_name;
     }
 
@@ -88,12 +89,12 @@ public class BankDetails {
         this.district = district;
     }
 
-    public String getState_name() {
-        return state_name;
+    public String getState() {
+        return state;
     }
 
-    public void setState_name(String state_name) {
-        this.state_name = state_name;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getBank_name() {
